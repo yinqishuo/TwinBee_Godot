@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkkktwtetc12j"]
+
+[ext_resource type="Script" path="res://element/plane.gd" id="1_wpn3j"]
+[ext_resource type="Texture2D" uid="uid://rlm54hgvnl4j" path="res://assets/plane1.png" id="2_bi72y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8bnyt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bi72y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="plane" type="Area2D"]
+script = ExtResource("1_wpn3j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8bnyt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -13, -5, -12, -10, -4, -8, 6, -12, 16, 11, 16, 7, 6, 10, -4, 5, -12)

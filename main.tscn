@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://37c0yf6oqdnc"]
+
+[ext_resource type="PackedScene" uid="uid://bkkktwtetc12j" path="res://element/plane.tscn" id="1_wyifq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.258824, 0.25098, 1, 1)
+
+[node name="plane" parent="." instance=ExtResource("1_wyifq")]
+position = Vector2(563, 325)
+scale = Vector2(2, 2)
