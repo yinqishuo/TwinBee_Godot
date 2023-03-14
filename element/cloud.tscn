@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfi5hevfusiau"]
+
+[ext_resource type="Script" path="res://element/cloud.gd" id="1_ekdtj"]
+[ext_resource type="Texture2D" uid="uid://cui8b0ddvjh72" path="res://assets/cloud.png" id="2_wn8ch"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5mcj"]
+atlas = ExtResource("2_wn8ch")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wplvi"]
+atlas = ExtResource("2_wn8ch")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wfa2"]
+atlas = ExtResource("2_wn8ch")
+region = Rect2(192, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhbgf"]
+atlas = ExtResource("2_wn8ch")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0ri3"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_b5mcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wplvi")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_1wfa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhbgf")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_b5mcj")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_jhbgf")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_b5mcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhbgf")
+}],
+"loop": true,
+"name": &"change",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_b5mcj")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wplvi")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_b5mcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wplvi")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_1wfa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wplvi")
+}],
+"loop": true,
+"name": &"change_1",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc336"]
+size = Vector2(74, 19)
+
+[node name="cloud" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_ekdtj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s0ri3")
+animation = &"change"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pc336")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

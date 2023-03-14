@@ -25,3 +25,13 @@
 JS:自动生成的脚本程序，用于导入engine类
 **pck** :pck 文件中会包含场景（.tscn）、脚本（.gd），还有资源（.jpg, .ttf）等。
  **wasm**  默认导出的 wasm 大概有 18M 左右（可能随版本会有差异），里面包含了整个引擎的所有功能。换句话说，哪怕只是做了一个空的项目，导出的 wasm 也是一样的，因为 wasm 就相当于一个 exe 执行文件。其实并非所有的引擎功能都是需要的，例如只是做个 2D 游戏的话，3D 部分的代码就不需要了。
+
+### 参考官方教程安装Git插件
+
+
+
+[Git 插件 v3 ·godotengine/godot-git-plugin Wiki (github.com)](https://github.com/godotengine/godot-git-plugin/wiki/Git-plugin-v3#set-up-from-source)
+
+
+
+最终配置失败，让填写的ssh密码到底是什么东西。

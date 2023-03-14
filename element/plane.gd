@@ -2,9 +2,11 @@ extends Area2D
 
 
 signal hit
-
+@export var bullet: PackedScene
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
+var shooting := false
+
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -23,7 +25,14 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed(&"move_up"):
 		velocity.y -= 1
-	
+	##发射子弹
+	var shoot = Input.is_action_pressed(&"shoot");
+	if shoot and not shooting:
+		var bulletIns = bullet.instantiate()
+		bulletIns.velocity = Vector2.UP
+		bulletIns.position = position + Vector2(0,-16)
+		get_parent().add_child(bulletIns)
+	shooting = shoot
 #	if velocity.length() > 0:
 #		velocity = velocity.normalized() * speed
 #		$AnimatedSprite2D.play()
@@ -42,15 +51,19 @@ func _process(delta):
 #		$AnimatedSprite2D.animation = &"up"
 #		$AnimatedSprite2D.flip_v = velocity.y > 0
 
-
 func start(pos):
 	position = pos
 	show()
 #	$CollisionShape2D.disabled = false
-
-
-func _on_Player_body_entered(_body):
+func _on_body_entered(body):
 	hide() # Player disappears after being hit.
 	hit.emit()
-#	# Must be deferred as we can't change physics properties on a physics callback.
-#	$CollisionShape2D.set_deferred(&"disabled", true)
+
+#func _on_Player_body_entered(_body):
+#	hide() # Player disappears after being hit.
+#	hit.emit()
+##	# Must be deferred as we can't change physics properties on a physics callback.
+##	$CollisionShape2D.set_deferred(&"disabled", true)
+
+
+
