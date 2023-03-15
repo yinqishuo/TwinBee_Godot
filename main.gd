@@ -11,4 +11,5 @@ func _process(delta):
 	var a = randi_range(0,180);
 	if not a:
 		var cloudins = cloud.instantiate()
+		cloudins.global_position = Vector2(randi_range(0,480),0)
 		add_child(cloudins)

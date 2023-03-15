@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv7t86wtvu4et"]
+
+[ext_resource type="Texture2D" uid="uid://xwcdvae1crxa" path="res://assets/bell.png" id="1_dlw5f"]
+[ext_resource type="Script" path="res://element/bell.gd" id="1_x1x2o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1osev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dlw5f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_x1x2o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1osev")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -11, -13, 13, 13, 13)

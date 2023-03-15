@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfi5hevfusiau"]
+[gd_scene load_steps=10 format=3 uid="uid://dfi5hevfusiau"]
 
 [ext_resource type="Script" path="res://element/cloud.gd" id="1_ekdtj"]
+[ext_resource type="PackedScene" uid="uid://dv7t86wtvu4et" path="res://element/bell.tscn" id="2_rkasd"]
 [ext_resource type="Texture2D" uid="uid://cui8b0ddvjh72" path="res://assets/cloud.png" id="2_wn8ch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5mcj"]
@@ -47,8 +48,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_jhbgf")
 }],
 "loop": true,
-"name": &"change",
-"speed": 5.0
+"name": &"change1",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 4.0,
@@ -70,22 +71,32 @@ animations = [{
 "texture": SubResource("AtlasTexture_wplvi")
 }],
 "loop": true,
-"name": &"change_1",
-"speed": 5.0
+"name": &"change2",
+"speed": 3.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc336"]
-size = Vector2(74, 19)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfbh3"]
+size = Vector2(34, 5)
 
 [node name="cloud" type="Area2D"]
-scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_ekdtj")
+bell = ExtResource("2_rkasd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s0ri3")
-animation = &"change"
+animation = &"change2"
+frame_progress = 0.808784
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_pc336")
+light_mask = 2
+visibility_layer = 4
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_vfbh3")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

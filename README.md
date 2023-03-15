@@ -35,3 +35,7 @@ JS:自动生成的脚本程序，用于导入engine类
 
 
 最终配置失败，让填写的ssh密码到底是什么东西。
+
+### 坑
+
+实例化到根节点的碰撞节点不能是Area2D，不会产生碰撞效果，得用rigidBody2D或者characterBody2D

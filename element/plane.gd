@@ -30,8 +30,10 @@ func _process(delta):
 	if shoot and not shooting:
 		var bulletIns = bullet.instantiate()
 		bulletIns.velocity = Vector2.UP
-		bulletIns.position = position + Vector2(0,-16)
-		get_parent().add_child(bulletIns)
+		bulletIns.global_position = global_position + Vector2(0,-16)
+		bulletIns.set_as_top_level(true)
+		add_child(bulletIns)
+		
 	shooting = shoot
 #	if velocity.length() > 0:
 #		velocity = velocity.normalized() * speed
