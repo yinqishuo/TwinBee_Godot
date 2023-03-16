@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var cloud_speed = 100 # How fast the player will move (pixels/sec).
-@export var bell_speed =  300
+@export var bell_speed =  Vector2(0,-400)
 @export var velocity = Vector2.DOWN 
 @export var bell: PackedScene
 # The player's movement vector.
@@ -25,10 +25,10 @@ func _on_area_entered(area):
 	self.set_deferred("Monitorable",false)
 	$CollisionShape2D.set_deferred("disabled",true)
 	var bellIns = bell.instantiate()
-	bellIns.linear_velocity = Vector2.UP * bell_speed
+	bellIns.init_bell_speed = bell_speed
 	bellIns.global_position = global_position
 	bellIns.set_as_top_level(true)
-	add_child(bellIns)
+	get_parent().add_child(bellIns)
 
 	
 #	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfi5hevfusiau"]
 
 [ext_resource type="Script" path="res://element/cloud.gd" id="1_ekdtj"]
-[ext_resource type="PackedScene" uid="uid://dv7t86wtvu4et" path="res://element/bell.tscn" id="2_rkasd"]
+[ext_resource type="PackedScene" uid="uid://l2jmjfd57jsm" path="res://element/bell.tscn" id="2_rkasd"]
 [ext_resource type="Texture2D" uid="uid://cui8b0ddvjh72" path="res://assets/cloud.png" id="2_wn8ch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5mcj"]
@@ -48,8 +48,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_jhbgf")
 }],
 "loop": true,
-"name": &"change1",
-"speed": 4.0
+"name": &"change",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 4.0,
@@ -71,8 +71,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_wplvi")
 }],
 "loop": true,
-"name": &"change2",
-"speed": 3.0
+"name": &"change_1",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfbh3"]
@@ -86,8 +86,7 @@ bell = ExtResource("2_rkasd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s0ri3")
-animation = &"change2"
-frame_progress = 0.808784
+animation = &"change"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2

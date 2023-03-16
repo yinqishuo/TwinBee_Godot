@@ -7,25 +7,17 @@
 radius = 8.06226
 
 [node name="bullet" type="Area2D"]
-collision_layer = 6
-collision_mask = 2
-priority = 1.0
+collision_layer = 4
+collision_mask = 10
 script = ExtResource("1_hdrmo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vae3s")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5kupw")
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_5kupw")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CircleShape2D_5kupw")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
