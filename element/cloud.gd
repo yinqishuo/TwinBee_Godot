@@ -14,21 +14,22 @@ func _ready():
 	$AnimatedSprite2D.play()
 	var types = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
 	$AnimatedSprite2D.animation = types.pick_random()
-	print('新建一个云朵')
+	#print('新建一个云朵')
 	
 func _process(delta):
 	velocity = velocity.normalized() * cloud_speed
 	position += velocity * delta
 func _on_area_entered(area):
-	print('检测到了')	 
+	#print('检测到了')	 
 	self.set_deferred("Monitoring",false)
 	self.set_deferred("Monitorable",false)
 	$CollisionShape2D.set_deferred("disabled",true)
 	var bellIns = bell.instantiate()
 	bellIns.init_bell_speed = bell_speed
 	bellIns.global_position = global_position
-	bellIns.set_as_top_level(true)
-	get_parent().add_child(bellIns)
+	#bellIns.set_as_top_level(true)
+	get_parent().call_deferred('add_child', bellIns)
+#	get_parent().add_child(bellIns)
 
 	
 #	

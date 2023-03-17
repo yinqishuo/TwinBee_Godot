@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://37c0yf6oqdnc"]
+[gd_scene load_steps=7 format=3 uid="uid://37c0yf6oqdnc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_wki8a"]
 [ext_resource type="PackedScene" uid="uid://bkkktwtetc12j" path="res://element/plane.tscn" id="1_wyifq"]
 [ext_resource type="PackedScene" uid="uid://dfi5hevfusiau" path="res://element/cloud.tscn" id="2_miisq"]
+[ext_resource type="AudioStream" uid="uid://ik5uym5m8x2s" path="res://assets/背景音乐_片头.wav" id="4_c8llu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o254u"]
 
@@ -35,3 +36,6 @@ shape = SubResource("RectangleShape2D_51x8q")
 [node name="plane" parent="." instance=ExtResource("1_wyifq")]
 position = Vector2(246, 340)
 scale = Vector2(2, 2)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c8llu")

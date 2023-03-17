@@ -1,18 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://l2jmjfd57jsm"]
+[gd_scene load_steps=11 format=3 uid="uid://l2jmjfd57jsm"]
 
 [ext_resource type="Texture2D" uid="uid://xwcdvae1crxa" path="res://assets/bell.png" id="1_dlw5f"]
 [ext_resource type="Script" path="res://element/bell.gd" id="1_x1x2o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaa7y"]
+atlas = ExtResource("1_dlw5f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_optxe"]
+atlas = ExtResource("1_dlw5f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1gy"]
+atlas = ExtResource("1_dlw5f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea0i0"]
+atlas = ExtResource("1_dlw5f")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1osev"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_dlw5f")
+"texture": SubResource("AtlasTexture_aaa7y")
 }],
 "loop": true,
-"name": &"default",
+"name": &"bule",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_optxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1gy")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea0i0")
+}],
+"loop": true,
+"name": &"white",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_optxe")
+}],
+"loop": true,
+"name": &"yellow",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_7g3xe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ms5bt"]
 resource_name = "rotate"
@@ -31,28 +89,13 @@ tracks/0/keys = {
 "values": [0.0, -6.28319, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_7g3xe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s2lit"]
 _data = {
 "RESET": SubResource("Animation_7g3xe"),
 "rotate": SubResource("Animation_ms5bt")
 }
 
-[node name="Area2D" type="Area2D"]
+[node name="bell" type="Area2D"]
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_x1x2o")
@@ -60,10 +103,11 @@ script = ExtResource("1_x1x2o")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_1osev")
+animation = &"bule"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(1.5, 1.5)
-polygon = PackedVector2Array(0, -11, -13, 13, 13, 13)
+polygon = PackedVector2Array(0, -19.3333, -15.3333, 16, 15.3333, 15.3333)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
