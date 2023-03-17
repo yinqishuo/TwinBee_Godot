@@ -95,7 +95,4 @@ polygon = PackedVector2Array(0, -13, -5, -12, -10, -4, -8, 6, -12, 16, 11, 16, 7
 stream = ExtResource("4_npbhj")
 volume_db = 10.0
 
-[node name="doppelgangerTimer" type="Timer" parent="."]
-wait_time = 0.05
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

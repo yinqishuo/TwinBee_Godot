@@ -29,10 +29,11 @@ func _process(delta):
 
 func _on_area_entered(area):
 	if area.get_name() == 'plane':
-		print("吃到铃铛加分")
-		queue_free()	
-	if area.get_name() == 'bullet':
-		print("被子弹打中")
+		queue_free()
+	if 'bullet' in area.get_name() :
+	## 并不是每个子弹的名字都叫bulet，多个子弹重名时会添加编号@bullet@157
+	## 所以要用in关键字 等于 string.contains()
+		#print("被子弹打中")
 		bell_speed = init_bell_speed
 		var random_num = randi_range(0,100)
 		if random_num < 20:
