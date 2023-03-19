@@ -60,6 +60,7 @@ shoot={
 2d_physics/layer_2="clond"
 2d_physics/layer_3="player_bullet"
 2d_physics/layer_4="bell"
+2d_physics/layer_5="enemy"
 
 [rendering]
 

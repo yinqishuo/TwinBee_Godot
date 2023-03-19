@@ -91,7 +91,9 @@ func _on_body_entered(body):
 	hit.emit()
 
 func _on_area_entered(area):
-	if area.get_name() == 'bell':
+	if 'Strawberry' in area.get_name():
+		print("被打中了")
+	if 'bell' in area.get_name():
 		#根据不同的铃铛切换不同的状态
 		if area.state == bell_state.ORIGIN:#普通铃铛
 			print('加分了')

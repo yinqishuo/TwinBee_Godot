@@ -72,7 +72,7 @@ animations = [{
 }]
 
 [node name="plane" type="Area2D"]
-collision_mask = 9
+collision_mask = 25
 script = ExtResource("1_wpn3j")
 bullet = ExtResource("2_rmi2c")
 

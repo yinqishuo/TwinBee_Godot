@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://bajjwejldrht2"]
+
+[ext_resource type="Script" path="res://element/enemy/Strawberry.gd" id="1_5l3nb"]
+[ext_resource type="Texture2D" uid="uid://blfaouo2ifkkt" path="res://assets/strawberry.png" id="2_6uya1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klmv4"]
+atlas = ExtResource("2_6uya1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2fxo"]
+atlas = ExtResource("2_6uya1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqh34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klmv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2fxo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ej2hk"]
+radius = 22.561
+
+[sub_resource type="Curve2D" id="Curve2D_l2q3k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxtn0"]
+radius = 202.01
+
+[node name="Strawberry" type="Area2D"]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_5l3nb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_nqh34")
+frame_progress = 0.768877
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ej2hk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_l2q3k")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+[node name="MonitorArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MonitorArea"]
+shape = SubResource("CircleShape2D_dxtn0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="MonitorArea" to="." method="_on_monitor_area_entered"]
