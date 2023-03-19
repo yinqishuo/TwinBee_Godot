@@ -33,6 +33,7 @@ func _on_area_entered(area):
 	if 'bullet' in area.get_name() :
 	## 并不是每个子弹的名字都叫bulet，多个子弹重名时会添加编号@bullet@157
 	## 所以要用in关键字 等于 string.contains()
+		$AudioStreamPlayer2D.play()
 		#print("被子弹打中")
 		bell_speed = init_bell_speed
 		var random_num = randi_range(0,100)

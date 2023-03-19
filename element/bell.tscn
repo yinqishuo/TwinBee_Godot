@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://l2jmjfd57jsm"]
+[gd_scene load_steps=12 format=3 uid="uid://l2jmjfd57jsm"]
 
 [ext_resource type="Texture2D" uid="uid://xwcdvae1crxa" path="res://assets/bell.png" id="1_dlw5f"]
 [ext_resource type="Script" path="res://element/bell.gd" id="1_x1x2o"]
+[ext_resource type="AudioStream" uid="uid://cv6burmef6tca" path="res://assets/铃铛.wav" id="3_fee3m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aaa7y"]
 atlas = ExtResource("1_dlw5f")
@@ -113,5 +114,8 @@ polygon = PackedVector2Array(0, -19.3333, -15.3333, 16, 15.3333, 15.3333)
 libraries = {
 "": SubResource("AnimationLibrary_s2lit")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fee3m")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
