@@ -1,25 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://bajjwejldrht2"]
+[gd_scene load_steps=14 format=3 uid="uid://c5qmsgxlcmj4x"]
 
-[ext_resource type="Script" path="res://element/enemy/Strawberry.gd" id="1_5l3nb"]
-[ext_resource type="Texture2D" uid="uid://blfaouo2ifkkt" path="res://assets/strawberry.png" id="2_6uya1"]
+[ext_resource type="Script" path="res://element/enemy/radish.gd" id="1_g0k55"]
+[ext_resource type="Texture2D" uid="uid://ddsffi6liggc8" path="res://assets/radish.png" id="2_ejtrt"]
 [ext_resource type="Texture2D" uid="uid://bwrod5gm0s857" path="res://assets/enemy_burst.png" id="3_h23ug"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_klmv4"]
-atlas = ExtResource("2_6uya1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mycfb"]
+atlas = ExtResource("2_ejtrt")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2fxo"]
-atlas = ExtResource("2_6uya1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_75mkx"]
+atlas = ExtResource("2_ejtrt")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nqh34"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_klmv4")
+"texture": SubResource("AtlasTexture_mycfb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s2fxo")
+"texture": SubResource("AtlasTexture_75mkx")
 }],
 "loop": true,
 "name": &"default",
@@ -72,13 +72,10 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dxtn0"]
-radius = 202.01
-
-[node name="Strawberry" type="Area2D"]
+[node name="radish" type="Area2D"]
 collision_layer = 16
 collision_mask = 4
-script = ExtResource("1_5l3nb")
+script = ExtResource("1_g0k55")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -94,14 +91,6 @@ visible = false
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_g00ff")
 
-[node name="MonitorArea" type="Area2D" parent="."]
-collision_layer = 0
-monitorable = false
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MonitorArea"]
-shape = SubResource("CircleShape2D_dxtn0")
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="animation_finished" from="AnimatedBurst" to="." method="_on_burst_animation_finished"]
-[connection signal="area_entered" from="MonitorArea" to="." method="_on_monitor_area_entered"]

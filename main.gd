@@ -17,8 +17,12 @@ func _process(delta):
 		var temp = randi_range(240,480)
 		var Strawberryins = Strawberry.instantiate()
 		Strawberryins.global_position = Vector2(temp+32,0)
+		Strawberryins.direction = true
+		Strawberryins.followPath = 1
 		var Strawberryins2 = Strawberry.instantiate()
 		Strawberryins2.global_position = Vector2(temp-32,0)
+		Strawberryins2.direction = false
+		Strawberryins2.followPath = 1
 		var Strawberryins3 = Strawberry.instantiate()
 		Strawberryins3.global_position = Vector2(temp,0)
 		add_child(cloudins)

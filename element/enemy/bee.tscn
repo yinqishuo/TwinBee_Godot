@@ -1,29 +1,29 @@
-[gd_scene load_steps=15 format=3 uid="uid://bajjwejldrht2"]
+[gd_scene load_steps=17 format=3 uid="uid://cjhtwlxovc4de"]
 
-[ext_resource type="Script" path="res://element/enemy/Strawberry.gd" id="1_5l3nb"]
-[ext_resource type="Texture2D" uid="uid://blfaouo2ifkkt" path="res://assets/strawberry.png" id="2_6uya1"]
+[ext_resource type="Script" path="res://element/enemy/bee.gd" id="1_abrvo"]
+[ext_resource type="Texture2D" uid="uid://cjxos0e660ni1" path="res://assets/bee.png" id="2_uqsva"]
 [ext_resource type="Texture2D" uid="uid://bwrod5gm0s857" path="res://assets/enemy_burst.png" id="3_h23ug"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_klmv4"]
-atlas = ExtResource("2_6uya1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_eee1b"]
+atlas = ExtResource("2_uqsva")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2fxo"]
-atlas = ExtResource("2_6uya1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0432"]
+atlas = ExtResource("2_uqsva")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nqh34"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_klmv4")
+"texture": SubResource("AtlasTexture_eee1b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s2fxo")
+"texture": SubResource("AtlasTexture_e0432")
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
+"speed": 4.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ej2hk"]
@@ -75,14 +75,27 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxtn0"]
 radius = 202.01
 
-[node name="Strawberry" type="Area2D"]
+[sub_resource type="Curve2D" id="Curve2D_p0ln0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 426, 0, 0, 0, 0, 0, 406, 223, 0, 0, 0, 0, 380, 349, 0, 0, 0, 0, 341, 499, 0, 0, 0, 0, 302, 583, 0, 0, 0, 0, 263, 634, 0, 0, 0, 0, 191, 628, 0, 0, 0, 0, 158, 571, 0, 0, 0, 0, 134, 448, 0, 0, 0, 0, 113, 325, 0, 0, 0, 0, 92, 223, 0, 0, 0, 0, 71, 118, 0, 0, 0, 0, 61, 0)
+}
+point_count = 13
+
+[sub_resource type="Curve2D" id="Curve2D_7tivl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 374, 9, 0, 0, 0, 0, 369, 148, 0, 0, 0, 0, 322, 338, 0, 0, 0, 0, 273, 429, 0, 0, 0, 0, 221, 463, 0, 0, 0, 0, 162, 372, 0, 0, 0, 0, 130, 261, 0, 0, 0, 0, 98, 172, 0, 0, 0, 0, 78, 91, 0, 0, 0, 0, 61, 12)
+}
+point_count = 10
+
+[node name="bee" type="Area2D"]
 collision_layer = 16
 collision_mask = 4
-script = ExtResource("1_5l3nb")
+script = ExtResource("1_abrvo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nqh34")
+frame_progress = 0.600503
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ej2hk")
@@ -100,6 +113,23 @@ monitorable = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MonitorArea"]
 shape = SubResource("CircleShape2D_dxtn0")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_p0ln0")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(291.282, 597.016)
+rotation = 2.22364
+progress = 617.795
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7tivl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(373.852, 13.1166)
+rotation = 1.60675
+progress = 4.17
+rotates = false
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
